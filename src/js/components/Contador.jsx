@@ -1,13 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const Contador = (props) => {
+export const Contador = () => {
+  const [count, setCount] = useState(0);
 
-    const [count,setCount] = useState(0);
- 
-	return (
-      
-        <button  className="btn btn-danger  col-12 m-5" style={{ height: "400px", fontSize:"300px"}} onClick={()=>setCount(count + 1)}>{count}</button>
-	);
+  useEffect(() => {
+    setInterval(() => {
+      setCount((prev) => prev + 1);
+    }, 1000);
+  }, []); 
+
+  return (
+    <div className="text-bg-danger col-12 m-5"style={{ height: "400px", fontSize: "300px", textAlign: "center" }}>
+      {count}
+    </div>
+  );
 };
-
-export default Contador;
